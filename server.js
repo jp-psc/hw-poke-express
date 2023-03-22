@@ -4,17 +4,16 @@ const PORT = 3000
 
 const { createEngine } = require('jsx-view-engine')
 
-const pokemon = require('./models/pokemon')
+const pokemonRoute = require('./routes/pokemonRoute')
 
+app.set('view engine', 'jsx')
 app.engine('jsx', createEngine())
 
 app.get('/', (req, res) => {
-    res.send('Welcome to the Pokemon App!')
+    res.send('<h2>Welcome to the Pokemon App!</h2><br/><a href=/pokemon>View Pokemon</a>')
 })
 
-app.get('/pokemon', (req, res) => {
-    res.send('Index.jsx')
-})
+app.use('/pokemon', pokemonRoute)
 
 app.listen(PORT, () => {
     console.log('Listening to the port: ' + PORT)

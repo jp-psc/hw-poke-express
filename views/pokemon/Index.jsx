@@ -1,14 +1,15 @@
 import React from 'react'
     
-function Index (props) {
-    const myStyle = {
+const myStyle = {
         color: '#ffffff',
         backgroundColor: '#000000',
         };
 
+function Index(props) {
+
     return (
                 <div>
-                    <h1>See all the Pokemon!</h1>
+                    <h1 style={myStyle}>See all the Pokemon!</h1>
                     <ul>
                         {props.pokemon.map((pokemon, index) => 
                             <li key={index}>
