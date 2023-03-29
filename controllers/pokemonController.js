@@ -1,11 +1,11 @@
 const Pokemon = require('../models/pokemon')
+const PokemonDB = require('../models/pokemonModel')
 
 module.exports.index = async (req, res) => {
 
     try {
-        // const pokemon = await Pokemon.find() 
+        const Pokemon = await PokemonDB.find() 
         console.log('inside Index controller')
-        console.log(Pokemon)
         res.render('Index', { Pokemon })
     } catch(err) {
         console.log(err)
@@ -13,17 +13,27 @@ module.exports.index = async (req, res) => {
     }
 }
 
+
 module.exports.show = async (req, res) => {
     try {
-        // Pokemon = Pokemon(req.params.id)
-        console.log("params", req.params.id)
-        
-        res.render('Show', {pokemon: Pokemon[req.params.id] })
-    } catch(err) {
-        console.log(err)
-        res.send(err.message)
+      const pokemon = await PokemonDB.findById(req.params.id);
+      res.render("Show", { pokemon });
+    } catch (err) {
+      console.log(err);
+      res.send(err.message);
     }
-}
+  };
+
+module.exports.seed = async (req, res) => {
+    try {
+      await PokemonDB.deleteMany({}); // Keep empty to delete everything
+      PokemonDB.create(Pokemon);
+      res.redirect("/");
+    } catch (err) {
+      console.log(err);
+      res.send(err.message);
+    }
+  };
 
 module.exports.create = async (req, res) => {
     try {

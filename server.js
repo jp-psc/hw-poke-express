@@ -42,11 +42,7 @@ app.get('/', (req, res) => {
 })
 
 
-
 app.use('/pokemon', pokemonRoute)
-
-
-
 
 
 app.listen(PORT, () => {

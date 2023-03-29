@@ -20,6 +20,8 @@ router.post('/', pokemonController.create)
 // Setup an "show" route for fruits, attach it to router along with the controller logic
 router.get('/:id', pokemonController.show)
 
+router.post('/seed', pokemonController.seed)
+
 
 
 

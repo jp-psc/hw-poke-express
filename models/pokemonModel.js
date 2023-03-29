@@ -12,7 +12,7 @@ const pokemonSchema = new Schema({
         // validation to make sure the data is legit 
         required: true
     },
-    img: { type: String },
+    img: { type: String, required: true },
     
 })
 
